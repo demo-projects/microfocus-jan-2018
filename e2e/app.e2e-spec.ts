@@ -9,6 +9,6 @@ describe('microfocus-jan2018 App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to mf!');
+    expect(page.getParagraphText()).toEqual('Welcome to Microfocus Angular Course!');
   });
 });
