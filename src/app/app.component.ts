@@ -1,5 +1,6 @@
 import { ElementProperties } from './defintions/element-properties';
 import { Component } from '@angular/core';
+import { TAGS } from './constants/elements.constants';
 
 @Component({
   selector: 'mf-root',
@@ -11,12 +12,17 @@ import { Component } from '@angular/core';
           class="element"
           *ngFor="let element of elements; let i = index"
           [class.element-selected]="isSelected(i)"
-          (mfClickAndStop)="setSelectedIndex(i)">
-          <h1
-            [style.color]="element.color"
-            [style.opacity]="element.opacity">
-            Welcome to {{ element.title }}!
-          </h1>
+          (mfClickAndStop)="setSelectedIndex(i)"
+          [style.color]="element.color"
+          [style.opacity]="element.opacity">
+          <ng-container [ngSwitch]="element.tag">
+            <h1 *ngSwitchCase="TAGS.H1">
+              Welcome to {{ element.title }}!
+            </h1>
+            <h2 *ngSwitchCase="TAGS.H2">
+              Welcome to {{ element.title }}!
+            </h2>
+          </ng-container>
         </div>
       </div>
       <mf-properties-editor
@@ -34,13 +40,16 @@ import { Component } from '@angular/core';
   ]
 })
 export class AppComponent {
+  TAGS = TAGS;
   elements: ElementProperties[] = [
     {
+      tag: TAGS.H1,
       title: 'Microfocus Angular Course',
       color: '#123ABC',
       opacity: 1
     },
     {
+      tag: TAGS.H2,
       title: 'January 2018',
       color: '#456DEF',
       opacity: 1

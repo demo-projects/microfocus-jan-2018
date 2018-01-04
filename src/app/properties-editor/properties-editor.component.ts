@@ -1,11 +1,22 @@
 import { ElementProperties } from './../defintions/element-properties';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { debounce } from 'lodash';
+import { TAGS } from '../constants/elements.constants';
+import { values } from 'lodash';
 
 @Component({
   selector: 'mf-properties-editor',
   template: `
     <div class="properties">
+      <h4>Properties Editor</h4>
+      <mf-property-field label="Tag">
+        <select
+          #tag
+          [value]="properties.tag"
+          (change)="setProperties.emit({ tag: tag.value })">
+          <option *ngFor="let tag of TAGS" [value]="tag">{{ tag }}</option>
+        </select>
+      </mf-property-field>
       <mf-property-field label="Title">
         <input
           type="text"
@@ -48,8 +59,8 @@ import { debounce } from 'lodash';
 export class PropertiesEditorComponent implements OnInit {
   @Input() properties: ElementProperties;
   @Output() setProperties = new EventEmitter<any>();
+  TAGS = values(TAGS);
   constructor() { }
-
   debouncedUpdate = debounce((values) => {
     this.setProperties.emit(values);
   }, 200);
