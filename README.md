@@ -31,10 +31,18 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 ## Cheatsheet
-Angular CLI
+### Angular CLI
 $ npm i -g @angular/cli
 $ ng new  microfocus-jan2018  --style scss --prefix mf --routing --inline-style --inline-template
 $ ng generate component <component-name>
 $ ng build
 $ npm i -g http-server
 $ npm i -g source-map-explorer
+
+
+### ES6 / ES7 / Typescript
+decorators @
+destructuring ...
+let and const vs. var
+() => vs. function
+

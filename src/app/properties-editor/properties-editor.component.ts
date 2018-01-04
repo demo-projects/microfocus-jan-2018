@@ -1,27 +1,37 @@
+import { ElementProperties } from './../defintions/element-properties';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'mf-properties-editor',
   template: `
     <div class="properties">
-      <div class="field">
-        <label>Title:</label>
+      <mf-property-field label="Title">
         <input
           type="text"
           #input
-          [value]="textTitle"
-          (input)="setTitle.emit(input.value)"
+          [value]="properties.title"
+          (input)="setProperties.emit({ title: input.value })"
         />
-      </div>
-      <div class="field">
-        <label>Color:</label>
+      </mf-property-field>
+      <mf-property-field label="Color">
         <input
           #colorInput
           type="color"
-          [value]="color"
-          (change)="setColor.emit(colorInput.value)"
+          [value]="properties.color"
+          (change)="setProperties.emit({ color: colorInput.value })"
         />
-      </div>
+      </mf-property-field>
+      <mf-property-field label="Opacity">
+        <input
+          #opacityInput
+          type="range"
+          min="0"
+          max="1"
+          step="0.001"
+          [value]="properties.opacity"
+          (input)="setProperties.emit({ opacity: opacityInput.value })"
+        />
+      </mf-property-field>
     </div>
   `,
   styles: [
@@ -34,10 +44,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   ]
 })
 export class PropertiesEditorComponent implements OnInit {
-  @Input() textTitle: string;
-  @Input() color: string;
-  @Output() setColor = new EventEmitter<any>();
-  @Output() setTitle = new EventEmitter<any>();
+  @Input() properties: ElementProperties;
+  @Output() setProperties = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {

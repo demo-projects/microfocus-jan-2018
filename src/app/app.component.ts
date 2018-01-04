@@ -1,3 +1,4 @@
+import { ElementProperties } from './defintions/element-properties';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,15 +7,15 @@ import { Component } from '@angular/core';
     <!--The content below is only a placeholder and can be replaced.-->
     <div class="container">
       <div class="working-area">
-        <h1 [style.color]="color">
-          Welcome to {{ title }}!
+        <h1
+          [style.color]="properties.color"
+          [style.opacity]="properties.opacity">
+          Welcome to {{ properties.title }}!
         </h1>
       </div>
       <mf-properties-editor
-        [textTitle]="title"
-        [color]="color"
-        (setTitle)="setTitle($event)"
-        (setColor)="setColor($event)"
+        [properties]="properties"
+        (setProperties)="updateProperties($event)"
       ></mf-properties-editor>
     </div>
   `,
@@ -24,14 +25,17 @@ import { Component } from '@angular/core';
   ]
 })
 export class AppComponent {
-  title = 'Microfocus Angular Course';
-  color = '#123ABC';
+  properties: ElementProperties = {
+    title: 'Microfocus Angular Course',
+    color: '#123ABC',
+    opacity: 1
+  };
 
-  setTitle(value) {
-    this.title = value;
+  updateProperties(newProperties) {
+    this.properties = {
+      ...this.properties,
+      ...newProperties
+    };
   }
 
-  setColor(value) {
-    this.color = value;
-  }
 }
