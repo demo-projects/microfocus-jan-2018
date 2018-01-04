@@ -1,5 +1,6 @@
 import { ElementProperties } from './../defintions/element-properties';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { debounce } from 'lodash';
 
 @Component({
   selector: 'mf-properties-editor',
@@ -10,7 +11,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
           type="text"
           #input
           [value]="properties.title"
-          (input)="setProperties.emit({ title: input.value })"
+          (change)="setProperties.emit({ title: input.value })"
+          (input)="debouncedUpdate({ title: input.value })"
         />
       </mf-property-field>
       <mf-property-field label="Color">
@@ -47,6 +49,10 @@ export class PropertiesEditorComponent implements OnInit {
   @Input() properties: ElementProperties;
   @Output() setProperties = new EventEmitter<any>();
   constructor() { }
+
+  debouncedUpdate = debounce((values) => {
+    this.setProperties.emit(values);
+  }, 200);
 
   ngOnInit() {
   }
