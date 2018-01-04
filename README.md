@@ -46,3 +46,10 @@ destructuring ...
 let and const vs. var
 () => vs. function
 
+## Cool talks
+Uri Shaked
+Shai Reznik
+
+
+## research
+trackBy - elements
