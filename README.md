@@ -49,7 +49,3 @@ let and const vs. var
 ## Cool talks
 Uri Shaked
 Shai Reznik
-
-## homework
-Add collapsible sidepanel component in shared module (hint: ng-content)
-Allow to add different types of tags - h1 or h2 (hint: ng-switch)

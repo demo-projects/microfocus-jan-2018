@@ -22,8 +22,7 @@ import { values } from 'lodash';
           type="text"
           #input
           [value]="properties.title"
-          (change)="setProperties.emit({ title: input.value })"
-          (input)="debouncedUpdate({ title: input.value })"
+          (input)="setProperties.emit({ title: input.value })"
         />
       </mf-property-field>
       <mf-property-field label="Color">
@@ -61,9 +60,6 @@ export class PropertiesEditorComponent implements OnInit {
   @Output() setProperties = new EventEmitter<any>();
   TAGS = values(TAGS);
   constructor() { }
-  debouncedUpdate = debounce((values) => {
-    this.setProperties.emit(values);
-  }, 200);
 
   ngOnInit() {
   }
