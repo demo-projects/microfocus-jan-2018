@@ -25,11 +25,16 @@ import { TAGS } from './constants/elements.constants';
           </ng-container>
         </div>
       </div>
-      <mf-properties-editor
-        *ngIf="selectedElementIndex !== null"
-        [properties]="elements[selectedElementIndex]"
-        (setProperties)="updateProperties($event)"
-      ></mf-properties-editor>
+      <mf-sidepanel title="Properties Editor">
+        <mf-properties-editor
+          *ngIf="selectedElementIndex !== null"
+          [properties]="elements[selectedElementIndex]"
+          (setProperties)="updateProperties($event)"
+        ></mf-properties-editor>
+        <h3 *ngIf="selectedElementIndex === null">
+          Please select an element in the working area
+        </h3>
+        </mf-sidepanel>
     </div>
   `,
   styles: [

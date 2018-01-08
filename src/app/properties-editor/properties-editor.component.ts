@@ -47,7 +47,6 @@ import { values } from 'lodash';
     </div>
   `,
   styles: [
-    `:host { border-left: 1px solid grey; padding: 10px}`,
     `input {width: 350px }`,
     `.properties {
       display: flex;
