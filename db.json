@@ -1,0 +1,16 @@
+{
+  "elements": [
+    {
+      "tag": "h1",
+      "title": "Microfocus Angular Course",
+      "color": "#123ABC",
+      "opacity": 1
+    },
+    {
+      "tag": "h2",
+      "title": "January 2018",
+      "color": "#456DEF",
+      "opacity": 1
+    }
+  ]
+}
