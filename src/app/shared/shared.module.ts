@@ -8,7 +8,15 @@ import { SidepanelComponent } from './sidepanel/sidepanel.component';
   imports: [
     CommonModule
   ],
-  declarations: [PropertyFieldComponent, ClickAndStopDirective, SidepanelComponent],
-  exports: [PropertyFieldComponent, ClickAndStopDirective, SidepanelComponent]
+  declarations: [
+    PropertyFieldComponent,
+    ClickAndStopDirective,
+    SidepanelComponent
+  ],
+  exports: [
+    CommonModule,
+    PropertyFieldComponent,
+    ClickAndStopDirective,
+    SidepanelComponent]
 })
 export class SharedModule { }
