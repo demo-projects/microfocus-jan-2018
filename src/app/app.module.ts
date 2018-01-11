@@ -3,18 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { EditorModule } from './editor/editor.module';
 import { AppComponent } from './app.component';
-import { PropertiesEditorComponent } from './properties-editor/properties-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PropertiesEditorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

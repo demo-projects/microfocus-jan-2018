@@ -38,7 +38,7 @@ $ ng generate component <component-name>
 $ ng build
 $ npm i -g http-server
 $ npm i -g source-map-explorer
-
+https://github.com/angular/angular-cli/wiki/build
 
 ### ES6 / ES7 / Typescript
 decorators @

@@ -1,7 +1,7 @@
-import { ElementProperties } from './../defintions/element-properties';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { debounce } from 'lodash';
-import { TAGS } from '../constants/elements.constants';
+import { ElementProperties } from '../../defintions/element-properties';
+import { TAGS } from '../../constants/elements.constants';
 import { values } from 'lodash';
 
 @Component({
