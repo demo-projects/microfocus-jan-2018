@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementProperties } from '../../defintions/element-properties';
 import { TAGS } from '../../constants/elements.constants';
+import { EditorService } from '../editor.service';
 
 @Component({
   selector: 'mf-editor',
   template: `
     <div class="container">
-      <div class="working-area" (click)="setSelectedIndex(null)">
+    <mf-sidepanel title="Properties Editor" panelLeft="true">
+      <mf-elements-navigator></mf-elements-navigator>
+    </mf-sidepanel>
+    <div class="working-area" (click)="editor.setSelectedIndex(null)">
         <div
           class="element"
-          *ngFor="let element of elements; let i = index"
-          [class.element-selected]="isSelected(i)"
-          (mfClickAndStop)="setSelectedIndex(i)"
+          *ngFor="let element of editor.elements; let i = index"
+          [class.element-selected]="editor.isSelected(i)"
+          (mfClickAndStop)="editor.setSelectedIndex(i)"
           [style.color]="element.color"
           [style.opacity]="element.opacity">
           <ng-container [ngSwitch]="element.tag">
@@ -25,15 +28,8 @@ import { TAGS } from '../../constants/elements.constants';
         </div>
       </div>
       <mf-sidepanel title="Properties Editor">
-        <mf-properties-editor
-          *ngIf="selectedElementIndex !== null"
-          [properties]="elements[selectedElementIndex]"
-          (setProperties)="updateProperties($event)"
-        ></mf-properties-editor>
-        <h3 *ngIf="selectedElementIndex === null">
-          Please select an element in the working area
-        </h3>
-        </mf-sidepanel>
+        <mf-properties-editor></mf-properties-editor>
+      </mf-sidepanel>
     </div>
   `,
   styles: [
@@ -46,40 +42,10 @@ import { TAGS } from '../../constants/elements.constants';
 export class EditorComponent implements OnInit {
 
   TAGS = TAGS;
-  elements: ElementProperties[] = [
-    {
-      tag: TAGS.H1,
-      title: 'Microfocus Angular Course',
-      color: '#123ABC',
-      opacity: 1
-    },
-    {
-      tag: TAGS.H2,
-      title: 'January 2018',
-      color: '#456DEF',
-      opacity: 1
-    }
-  ];
-  selectedElementIndex = null;
 
-  constructor() { }
+  constructor(public editor: EditorService) { }
 
   ngOnInit() {
-  }
-
-  setSelectedIndex(index) {
-    this.selectedElementIndex = index;
-  }
-
-  isSelected(index) {
-    return this.selectedElementIndex === index;
-  }
-
-  updateProperties(newProperties) {
-    this.elements[this.selectedElementIndex] = {
-      ...this.elements[this.selectedElementIndex],
-      ...newProperties
-    };
   }
 
 

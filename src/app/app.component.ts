@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'mf-root',
   template: `
     <mf-editor></mf-editor>
+    <mf-editor></mf-editor>
   `,
   styles: [
   ]

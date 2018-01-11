@@ -38,6 +38,7 @@ $ ng generate component <component-name>
 $ ng build
 $ npm i -g http-server
 $ npm i -g source-map-explorer
+$ ng g service <path/to/my-service> -m <providing-module>
 https://github.com/angular/angular-cli/wiki/build
 
 ### ES6 / ES7 / Typescript
@@ -46,6 +47,10 @@ destructuring ...
 let and const vs. var
 () => vs. function
 
-## Cool talks
+### Tools
+ngrev
+augury
+
+### Cool talks
 Uri Shaked
 Shai Reznik

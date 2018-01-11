@@ -1,19 +1,25 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, NgZone,
+  ApplicationRef, ChangeDetectorRef } from '@angular/core';
 import { debounce } from 'lodash';
 import { ElementProperties } from '../../defintions/element-properties';
 import { TAGS } from '../../constants/elements.constants';
 import { values } from 'lodash';
+import { EditorService } from '../editor.service';
+
+// let counter = 0;
 
 @Component({
   selector: 'mf-properties-editor',
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="properties">
+    <div class="properties" *ngIf="editor.selectedElement">
       <h4>Properties Editor</h4>
       <mf-property-field label="Tag">
         <select
           #tag
-          [value]="properties.tag"
-          (change)="setProperties.emit({ tag: tag.value })">
+          [value]="editor.selectedElement.tag"
+          (change)="editor.updateProperties({ tag: tag.value })">
           <option *ngFor="let tag of TAGS" [value]="tag">{{ tag }}</option>
         </select>
       </mf-property-field>
@@ -21,16 +27,16 @@ import { values } from 'lodash';
         <input
           type="text"
           #input
-          [value]="properties.title"
-          (input)="setProperties.emit({ title: input.value })"
+          [value]="editor.selectedElement.title"
+          (input)="editor.updateProperties({ title: input.value })"
         />
       </mf-property-field>
       <mf-property-field label="Color">
         <input
           #colorInput
           type="color"
-          [value]="properties.color"
-          (change)="setProperties.emit({ color: colorInput.value })"
+          [value]="editor.selectedElement.color"
+          (change)="editor.updateProperties({ color: colorInput.value })"
         />
       </mf-property-field>
       <mf-property-field label="Opacity">
@@ -40,11 +46,14 @@ import { values } from 'lodash';
           min="0"
           max="1"
           step="0.001"
-          [value]="properties.opacity"
-          (input)="setProperties.emit({ opacity: opacityInput.value })"
+          [value]="editor.selectedElement.opacity"
+          (input)="editor.updateProperties({ opacity: opacityInput.value })"
         />
       </mf-property-field>
     </div>
+    <h3 *ngIf="!editor.selectedElement">
+      Please select an element in the working area
+    </h3>
   `,
   styles: [
     `input {width: 350px }`,
@@ -55,12 +64,24 @@ import { values } from 'lodash';
   ]
 })
 export class PropertiesEditorComponent implements OnInit {
-  @Input() properties: ElementProperties;
-  @Output() setProperties = new EventEmitter<any>();
   TAGS = values(TAGS);
-  constructor() { }
 
+  constructor(public editor: EditorService) { }
+
+  // constructor(private zone: NgZone, private applicationRef: ApplicationRef, private changeDetector: ChangeDetectorRef) { }
+
+  // currentTime() {
+  //   return new Date();
+  // }
   ngOnInit() {
+    // this.zone.runOutsideAngular(() => {
+    //   setInterval(() => {
+    //     counter++;
+    //     if (counter % 10 === 0) {
+    //       this.changeDetector.detectChanges();
+    //     }
+    //   }, 200);
+    // });
   }
 
 }
