@@ -26,6 +26,10 @@ import { EditorService } from '../editor.service';
             <h2 *ngSwitchCase="TAGS.H2">
               {{ element.title }}
             </h2>
+            <iframe
+              *ngSwitchCase="TAGS.YOUTUBE"
+              width="560" height="315" [src]="element.title | youtube"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </ng-container>
         </div>
       </div>

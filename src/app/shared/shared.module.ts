@@ -5,6 +5,7 @@ import { ClickAndStopDirective } from './click-and-stop.directive';
 import { SidepanelComponent } from './sidepanel/sidepanel.component';
 import { ValuesPipe } from './values.pipe';
 import { SortPipe } from './sort.pipe';
+import { YoutubePipe } from './youtube.pipe';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { SortPipe } from './sort.pipe';
     ClickAndStopDirective,
     SidepanelComponent,
     ValuesPipe,
-    SortPipe
+    SortPipe,
+    YoutubePipe
   ],
   exports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { SortPipe } from './sort.pipe';
     ClickAndStopDirective,
     SidepanelComponent,
     ValuesPipe,
-    SortPipe]
+    SortPipe,
+    YoutubePipe]
 })
 export class SharedModule { }
