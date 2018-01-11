@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TAGS } from '../../constants/elements.constants';
 import { EditorService } from '../editor.service';
-import { values } from 'lodash';
 
 @Component({
   selector: 'mf-elements-navigator',
@@ -10,7 +9,7 @@ import { values } from 'lodash';
       <h4>Elements Navigator</h4>
       <a
         (click)="editor.addElement(tag)"
-        *ngFor="let tag of TAGS ">{{ tag }}</a>
+        *ngFor="let tag of (TAGS | values | sort)">{{ tag }}</a>
     </div>
   `,
   styles: [
@@ -25,7 +24,7 @@ import { values } from 'lodash';
   ]
 })
 export class ElementsNavigatorComponent implements OnInit {
-  TAGS = values(TAGS);
+  TAGS = TAGS;
   constructor(public editor: EditorService) { }
 
   ngOnInit() {

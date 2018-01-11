@@ -4,7 +4,6 @@ import {
 import { debounce } from 'lodash';
 import { ElementProperties } from '../../defintions/element-properties';
 import { TAGS } from '../../constants/elements.constants';
-import { values } from 'lodash';
 import { EditorService } from '../editor.service';
 
 // let counter = 0;
@@ -20,7 +19,7 @@ import { EditorService } from '../editor.service';
           #tag
           [value]="editor.selectedElement.tag"
           (change)="editor.updateProperties({ tag: tag.value })">
-          <option *ngFor="let tag of TAGS" [value]="tag">{{ tag }}</option>
+          <option *ngFor="let tag of (TAGS | values | sort)" [value]="tag">{{ tag }}</option>
         </select>
       </mf-property-field>
       <mf-property-field label="Title">
@@ -64,7 +63,7 @@ import { EditorService } from '../editor.service';
   ]
 })
 export class PropertiesEditorComponent implements OnInit {
-  TAGS = values(TAGS);
+  TAGS = TAGS;
 
   constructor(public editor: EditorService) { }
 

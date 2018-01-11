@@ -6,7 +6,7 @@ import { EditorService } from '../editor.service';
   selector: 'mf-editor',
   template: `
     <div class="container">
-    <mf-sidepanel title="Properties Editor" panelLeft="true">
+    <mf-sidepanel title="Properties Editor" [panelLeft]="true">
       <mf-elements-navigator></mf-elements-navigator>
     </mf-sidepanel>
     <div class="working-area" (click)="editor.setSelectedIndex(null)">
@@ -19,10 +19,10 @@ import { EditorService } from '../editor.service';
           [style.opacity]="element.opacity">
           <ng-container [ngSwitch]="element.tag">
             <h1 *ngSwitchCase="TAGS.H1">
-              Welcome to {{ element.title }}!
+              {{ element.title }}
             </h1>
             <h2 *ngSwitchCase="TAGS.H2">
-              Welcome to {{ element.title }}!
+              {{ element.title }}
             </h2>
           </ng-container>
         </div>
