@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EditorService } from '../editor.service';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'mf-editor-actions',
   template: `
     <div class="actions">
+      <span *ngIf="projectId$ | async">Project {{ projectId$ | async }}:</span>
       <button (click)="save()">Save</button>
     </div>
   `,
@@ -27,10 +29,16 @@ import { EditorService } from '../editor.service';
   ]
 })
 export class EditorActionsComponent implements OnInit {
+  projectId$: any;
 
-  constructor(public editor: EditorService, private router: Router) { }
+  constructor(
+    public editor: EditorService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.projectId$ = this.route.params.map((params) => params.id);
   }
 
   save() {

@@ -5,21 +5,9 @@ import { TAGS } from '../constants/elements.constants';
 
 @Injectable()
 export class EditorService {
-  elements: ElementProperties[] = [
-    {
-      tag: TAGS.H1,
-      title: 'Microfocus Angular Course',
-      color: '#123ABC',
-      opacity: 1
-    },
-    {
-      tag: TAGS.H2,
-      title: 'January 2018',
-      color: '#456DEF',
-      opacity: 1
-    }
-  ];
+  elements: ElementProperties[] = [];
   selectedElementIndex = null;
+  projectId = null;
 
   get selectedElement() {
     return this.elements[this.selectedElementIndex];
@@ -57,11 +45,37 @@ export class EditorService {
   }
 
   save() {
+    return this.projectId ? this.update() : this.create();
+  }
+
+  create() {
     return this.http.post<Project>(
       `http://localhost:3000/projects`,
       {
         elements: this.elements
       }
     );
+  }
+
+  update() {
+    return this.http.put<Project>(
+      `http://localhost:3000/projects/${this.projectId}`,
+      {
+        id: this.projectId,
+        elements: this.elements
+      }
+    );
+  }
+
+  setCurrentProject(id) {
+    if (this.projectId !== id) {
+      this.projectId = id;
+
+      this.http.get<Project>(`http://localhost:3000/projects/${id}`)
+        .subscribe((data) => {
+          this.elements = data.elements;
+          this.selectedElementIndex = null;
+        });
+    }
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TAGS } from '../../constants/elements.constants';
 import { EditorService } from '../editor.service';
 
@@ -40,14 +41,22 @@ import { EditorService } from '../editor.service';
     `.element-selected { box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.5) }`
   ]
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, OnDestroy {
 
   TAGS = TAGS;
-
-  constructor(public editor: EditorService) { }
-
-  ngOnInit() {
+  subscription;
+  constructor(public editor: EditorService, private route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+    this.subscription = this.route.params.subscribe((params) => {
+      if (params.id) {
+        this.editor.setCurrentProject(params.id);
+      }
+    });
+  }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }
