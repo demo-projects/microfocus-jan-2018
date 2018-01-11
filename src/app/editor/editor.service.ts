@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ElementProperties } from '../defintions/element-properties';
+import { HttpClient } from '@angular/common/http';
+import { ElementProperties, Project } from '../defintions/element-properties';
 import { TAGS } from '../constants/elements.constants';
 
 @Injectable()
@@ -24,7 +25,7 @@ export class EditorService {
     return this.elements[this.selectedElementIndex];
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
 
   setSelectedIndex(index) {
@@ -55,4 +56,12 @@ export class EditorService {
     this.setSelectedIndex(this.elements.length - 1);
   }
 
+  save() {
+    return this.http.post<Project>(
+      `http://localhost:3000/projects`,
+      {
+        elements: this.elements
+      }
+    );
+  }
 }

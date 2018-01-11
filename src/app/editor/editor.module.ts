@@ -5,6 +5,7 @@ import { EditorComponent } from './editor/editor.component';
 import { PropertiesEditorComponent } from './properties-editor/properties-editor.component';
 import { EditorService } from './editor.service';
 import { ElementsNavigatorComponent } from './elements-navigator/elements-navigator.component';
+import { EditorActionsComponent } from './editor-actions/editor-actions.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ElementsNavigatorComponent } from './elements-navigator/elements-naviga
   declarations: [
     EditorComponent,
     PropertiesEditorComponent,
-    ElementsNavigatorComponent
+    ElementsNavigatorComponent,
+    EditorActionsComponent
   ],
   exports: [
   ],

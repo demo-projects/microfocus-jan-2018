@@ -54,3 +54,6 @@ augury
 ### Cool talks
 Uri Shaked
 Shai Reznik
+
+## Investigate
+routing - force refresh

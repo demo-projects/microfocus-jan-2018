@@ -10,6 +10,7 @@ import { EditorService } from '../editor.service';
       <mf-elements-navigator></mf-elements-navigator>
     </mf-sidepanel>
     <div class="working-area" (click)="editor.setSelectedIndex(null)">
+        <mf-editor-actions></mf-editor-actions>
         <div
           class="element"
           *ngFor="let element of editor.elements; let i = index"
@@ -34,7 +35,7 @@ import { EditorService } from '../editor.service';
   `,
   styles: [
     `.container { display: flex; height: 100% }`,
-    `.working-area { flex-grow: 1 }`,
+    `.working-area { flex-grow: 1; position: relative }`,
     `.element { cursor: pointer }`,
     `.element-selected { box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.5) }`
   ]
