@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'mf-header',
   template: `
-    <div class="header">
+    <nav class="header">
       <a routerLink="/editor">Microfocus</a>
       <a routerLink="/login">Login</a>
-    </div>
+    </nav>
   `,
   styles: [
     `a {
@@ -18,7 +18,6 @@ import { Component, OnInit } from '@angular/core';
     }`,
     `.header {
       height: 40px;
-      display: flex;
       padding: 10px;
       border-bottom: 1px solid grey;
       display: flex;

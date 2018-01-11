@@ -36,7 +36,10 @@ import { EditorService } from '../editor.service';
   `,
   styles: [
     `.container { display: flex; height: 100% }`,
-    `.working-area { flex-grow: 1; position: relative }`,
+    `.working-area {
+        flex-grow: 1; position: relative; padding: 10px;
+        background: url(assets/images/photoshop.png)
+      }`,
     `.element { cursor: pointer }`,
     `.element-selected { box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.5) }`
   ]

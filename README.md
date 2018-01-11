@@ -48,8 +48,9 @@ let and const vs. var
 () => vs. function
 
 ### Tools
-ngrev
-augury
+ngrev (by Minko Gechev)
+augury (by Rangle)
+VSCode angular essentials (by John Papa)
 
 ### Cool talks
 Uri Shaked
