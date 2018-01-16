@@ -58,3 +58,16 @@ Shai Reznik
 
 ## Investigate
 routing - force refresh
+
+## Hackathon Ideas
+- auto-save elements
+- add element types (images, form elements, links)
+- add properties (size, layout, animation, etc.)
+- split to common properties, and custom properties per tag / type
+- my projects - save list of projects in localstorage and make a page to view my projects
+- preview page - preview the work without the background and panels
+- add registration form
+- remove element action
+- multiple selection
+- re-ordering
+- add parent element for grouping
