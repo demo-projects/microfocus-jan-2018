@@ -58,6 +58,7 @@ Shai Reznik
 
 ## Investigate
 routing - force refresh
+forms - possibility to define global updateOn
 
 ## Hackathon Ideas
 - auto-save elements
