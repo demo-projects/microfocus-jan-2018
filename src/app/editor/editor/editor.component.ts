@@ -11,7 +11,10 @@ import { EditorService } from '../editor.service';
       <mf-elements-navigator></mf-elements-navigator>
     </mf-sidepanel>
     <div class="working-area" (click)="editor.setSelectedIndex(null)">
-        <mf-editor-actions></mf-editor-actions>
+        <mf-editor-actions
+          [projectId]="editor.projectId"
+          [elements]="editor.elements"
+        ></mf-editor-actions>
         <div
           class="element"
           *ngFor="let element of editor.elements; let i = index"

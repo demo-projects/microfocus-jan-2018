@@ -67,6 +67,29 @@
           "opacity": 1
         }
       ]
+    },
+    {
+      "id": 5,
+      "elements": [
+        {
+          "tag": "h1",
+          "title": "Hello",
+          "color": "#000000",
+          "opacity": 1
+        },
+        {
+          "tag": "h2",
+          "title": "World",
+          "color": "#000000",
+          "opacity": 1
+        },
+        {
+          "tag": "h2",
+          "title": "Immutable rocks",
+          "color": "#3f89d9",
+          "opacity": "0.734"
+        }
+      ]
     }
   ]
 }

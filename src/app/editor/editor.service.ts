@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { update } from 'lodash/fp';
 import { ElementProperties, Project } from '../defintions/element-properties';
 import { TAGS } from '../constants/elements.constants';
 
@@ -25,10 +26,11 @@ export class EditorService {
   }
 
   updateProperties(newProperties) {
-    this.elements[this.selectedElementIndex] = {
-      ...this.elements[this.selectedElementIndex],
-      ...newProperties
-    };
+    this.elements = update(
+      this.selectedElementIndex,
+      (element) => ({ ...element, ...newProperties }),
+      this.elements
+    );
   }
 
   addElement(tag) {

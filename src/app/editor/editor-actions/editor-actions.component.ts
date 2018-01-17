@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorService } from '../editor.service';
 import 'rxjs/add/operator/map';
@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
   selector: 'mf-editor-actions',
   template: `
     <div class="actions">
-      <span *ngIf="projectId$ | async">Project {{ projectId$ | async }}:</span>
+      <span *ngIf="projectId">Project {{ projectId }}:</span>
       <button (click)="save()">Save</button>
     </div>
   `,
@@ -28,8 +28,9 @@ import 'rxjs/add/operator/map';
     }`
   ]
 })
-export class EditorActionsComponent implements OnInit {
-  projectId$: any;
+export class EditorActionsComponent implements OnInit, OnChanges {
+  @Input() projectId: any;
+  @Input() elements: any;
 
   constructor(
     public editor: EditorService,
@@ -38,7 +39,12 @@ export class EditorActionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.projectId$ = this.route.params.map((params) => params.id);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.projectId && changes.elements) {
+      this.save();
+    }
   }
 
   save() {
