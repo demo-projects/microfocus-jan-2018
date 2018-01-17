@@ -50,7 +50,7 @@ import { EditorService } from '../editor.service';
         />
       </mf-property-field>
     </div>
-    <h3 *ngIf="!editor.selectedElement">
+    <h3 *mfUnless="editor.selectedElement">
       Please select an element in the working area
     </h3>
   `,

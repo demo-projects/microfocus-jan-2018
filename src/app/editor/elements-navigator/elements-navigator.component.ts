@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TAGS } from '../../constants/elements.constants';
 import { EditorService } from '../editor.service';
 
@@ -6,7 +6,7 @@ import { EditorService } from '../editor.service';
   selector: 'mf-elements-navigator',
   template: `
     <div class="elements">
-      <h4>Elements Navigator</h4>
+      <h4 #title>Elements Navigator</h4>
       <a
         (click)="editor.addElement(tag)"
         *ngFor="let tag of (TAGS | values | sort)">{{ tag }}</a>
@@ -25,6 +25,7 @@ import { EditorService } from '../editor.service';
 })
 export class ElementsNavigatorComponent implements OnInit {
   TAGS = TAGS;
+  @ViewChild('title') titleElement;
   constructor(public editor: EditorService) { }
 
   ngOnInit() {

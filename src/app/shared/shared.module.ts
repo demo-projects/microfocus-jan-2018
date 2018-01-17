@@ -6,6 +6,7 @@ import { SidepanelComponent } from './sidepanel/sidepanel.component';
 import { ValuesPipe } from './values.pipe';
 import { SortPipe } from './sort.pipe';
 import { YoutubePipe } from './youtube.pipe';
+import { UnlessDirective } from './unless.directive';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { YoutubePipe } from './youtube.pipe';
     SidepanelComponent,
     ValuesPipe,
     SortPipe,
-    YoutubePipe
+    YoutubePipe,
+    UnlessDirective
   ],
   exports: [
     CommonModule,
@@ -26,6 +28,7 @@ import { YoutubePipe } from './youtube.pipe';
     SidepanelComponent,
     ValuesPipe,
     SortPipe,
-    YoutubePipe]
+    YoutubePipe,
+    UnlessDirective]
 })
 export class SharedModule { }

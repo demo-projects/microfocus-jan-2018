@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
   template: `
     <div class="actions">
       <span *ngIf="projectId">Project {{ projectId }}:</span>
+
       <button (click)="save()">Save</button>
     </div>
   `,
